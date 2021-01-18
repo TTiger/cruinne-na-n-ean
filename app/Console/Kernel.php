@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Shop\Orders\Commands\OrderSyncCommand;
+use App\Shop\Products\Commands\ProductSyncCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +17,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        ProductSyncCommand::class,
+        OrderSyncCommand::class
     ];
 
     /**

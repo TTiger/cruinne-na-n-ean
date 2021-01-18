@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateOptionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up(): void
+    {
+        Schema::create('options', function (Blueprint $table) {
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('vendor_id')->index();
+            $table->unsignedBigInteger('vendor_product_id')->index();
+            $table->string('name');
+            $table->unsignedInteger('position')->nullable()->default(0);
+            $table->json('values')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('options');
+    }
+}
