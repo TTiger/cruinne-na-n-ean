@@ -2,7 +2,6 @@
 
 namespace App\Shop\Orders\Models;
 
-use App\Models\Lineitem;
 use App\Support\Database\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;

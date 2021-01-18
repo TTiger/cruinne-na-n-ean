@@ -37,10 +37,6 @@ class OrderTransformer implements ShopifyTransformerInterface
         try {
             $this->connection->beginTransaction();
 
-            if (! $record->get('order_number')) {
-                logger()->info('Order number missing', compact('record'));
-            }
-
             /** @var Order $order */
             $order = Order::query()->updateOrCreate([
                 'vendor_id' => $record->get('id')
