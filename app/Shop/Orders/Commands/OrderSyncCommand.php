@@ -8,7 +8,6 @@ use App\Shop\Orders\Events\OrderSyncRequest;
 use Illuminate\Console\Command;
 use Illuminate\Events\Dispatcher;
 
-use Illuminate\Support\Facades\Redis;
 use function compact;
 
 class OrderSyncCommand extends Command

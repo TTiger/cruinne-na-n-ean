@@ -89,7 +89,7 @@ class AppServiceProvider extends ServiceProvider
     private function registerOrderSync()
     {
         $this->app->singleton(SyncOrders::class, function (Application $app) {
-            return new SyncProducts(
+            return new SyncOrders(
                 $app->make(ClientManager::class),
                 $app->make(OrderTransformer::class),
                 $app->make(Connection::class),
