@@ -13,22 +13,32 @@ Add the following entry to your hosts file:
 Run the following commands in your terminal:
 
 ```shell
-git clone https://github.com/eoghanobrien/cruinne-na-n-ean.git
-cd ./cruinne-na-n-ean
-sail up -d
+git clone https://github.com/eoghanobrien/cruinne-na-n-ean.git universeofbirds
+cd ./universeofbirds
+```
+
+Add the `.env` file provided via email.
+
+```shell
+composer install --ignore-platform-reqs # expect some errors
+sail up -d # expect some warnings
+sail exec mysql mysql
+  mysql> create database universeofbirds;
+  mysql> exit
+```
+```shell
+sail composer update
 sail npm install
 sail npm run production
+sail artisan migrate
 ```
 
 ## Setup
 
 ```shell
-sail artisan migrate
-# open another terminal
-sail artisan queue:work --tries=3 --queue=default
-# in original terminal
 sail artisan shop:sync:products
 sail artisan shop:sync:orders
+sail artisan queue:work --tries=3 --queue=default --stop-when-empty
 ```
 
 ## Usage
